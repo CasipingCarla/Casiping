@@ -1,0 +1,58 @@
+Public Class Form1
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If TextBox1.Text() = "" Or TextBox2.Text() = "" Then
+            MessageBox.Show("PROVIDE A VALID NUMBER")
+            TextBox1.Clear()
+            TextBox2.Clear()
+            TextBox3.Clear()
+            Exit Sub
+        End If
+
+        If IsNumeric(TextBox1.Text) = False Or IsNumeric(TextBox2.Text) = False Then
+            MessageBox.Show("Invalid input! Numeric value only")
+            TextBox1.Clear()
+            TextBox2.Clear()
+            TextBox3.Clear()
+            Exit Sub
+        End If
+
+        Dim Enter1 As Integer = TextBox1.Text()
+        Dim Enter2 As Integer = TextBox2.Text()
+        Dim Total As Integer
+        Dim allnum As Integer = 0
+        Dim evennum As Integer = 0
+        Dim oddnum As Integer = 1
+        Total = Enter1 * Enter2
+        'Choose Action
+        If Not ComboBox1.Text = "ALL NUMBERS" Xor ComboBox1.Text = "EVEN NUMBERS" Xor ComboBox1.Text = "ODD NUMBERS" Then
+            MessageBox.Show("Please Choose an Action!")
+        End If
+        TextBox3.Text = Total
+        If ComboBox1.SelectedItem = "ALL NUMBERS" Then
+            Do While (allnum <= Total)
+                ListBox1.Items.Add(allnum)
+                allnum = allnum + 1
+            Loop
+        End If
+        If ComboBox1.SelectedItem = "EVEN NUMBERS" Then
+            Do While (evennum <= Total)
+                ListBox1.Items.Add(evennum)
+                evennum = evennum + 2
+            Loop
+        End If
+        If ComboBox1.SelectedItem = "ODD NUMBERS" Then
+            Do While (oddnum <= Total)
+                ListBox1.Items.Add(oddnum)
+                oddnum = oddnum + 2
+            Loop
+        End If
+    End Sub
+            
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        TextBox1.Clear()
+        TextBox2.Clear()
+        TextBox3.Clear()
+        ListBox1.Items.Remove(ListBox1.Text)
+        ComboBox1.ResetText()
+    End Sub
+End Class

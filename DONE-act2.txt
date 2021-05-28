@@ -1,0 +1,109 @@
+Public Class Form1
+
+    Private Sub compbt_Click(sender As Object, e As EventArgs) Handles compbt.Click
+
+        'Blank
+
+        If Q1tbx.Text = String.Empty Then
+            MessageBox.Show("Provide a valid grade")
+            Q1tbx.Focus()
+        ElseIf Q2tbx.Text = String.Empty Then
+            MessageBox.Show("Provide a valid grade")
+            Q2tbx.Focus()
+        ElseIf Q3tbx.Text = String.Empty Then
+            MessageBox.Show("Provide a valid grade")
+            Q3tbx.Focus()
+
+            'type-in a LETTER
+        Else
+            If Not IsNumeric(Q1tbx.Text) Then
+                MessageBox.Show("Provide a valid grade")
+                Q1tbx.Focus()
+            ElseIf Not IsNumeric(Q2tbx.Text) Then
+                MessageBox.Show("Provide a valid grade")
+                Q2tbx.Focus()
+            ElseIf Not IsNumeric(Q3tbx.Text) Then
+                MessageBox.Show("Provide a valid grade")
+                Q3tbx.Focus()
+
+
+                'more than 100 or less than 0
+
+            Else
+                If CInt(Q1tbx.Text) > 100 Or CInt(Q1tbx.Text) = 0 Then
+                    MessageBox.Show("Provide a valid grade")
+                    Q1tbx.Focus()
+                ElseIf CInt(Q2tbx.Text) > 100 Or CInt(Q2tbx.Text) = 0 Then
+                    MessageBox.Show("Provide a valid grade")
+                    Q2tbx.Focus()
+                ElseIf CInt(Q3tbx.Text) > 100 Or CInt(Q3tbx.Text) = 0 Then
+                    MessageBox.Show("Provide a valid grade")
+                    Q3tbx.Focus()
+
+                    'Correct input
+                Else
+                    avetbx.Text = (CInt(Q1tbx.Text) + CInt(Q2tbx.Text) + CInt(Q3tbx.Text)) / 3
+
+                    If CInt(avetbx.Text) >= 96 And CInt(avetbx.Text) <= 100 Then
+                        gpointtbx.Text = "1.00"
+                        glettertbx.Text = "A+"
+                        remarksbtx.Text = "Excellent"
+                    ElseIf CInt(avetbx.Text) >= 91 And CInt(avetbx.Text) <= 95 Then
+                        gpointtbx.Text = "1.25"
+                        glettertbx.Text = "A"
+                        remarksbtx.Text = "Very Good"
+                    ElseIf CInt(avetbx.Text) >= 86 And CInt(avetbx.Text) <= 90 Then
+                        gpointtbx.Text = "1.50"
+                        glettertbx.Text = "A-"
+                        remarksbtx.Text = "Very Good"
+                    ElseIf CInt(avetbx.Text) >= 81 And CInt(avetbx.Text) <= 85 Then
+                        gpointtbx.Text = "1.75"
+                        glettertbx.Text = "B+"
+                        remarksbtx.Text = "Good"
+                    ElseIf CInt(avetbx.Text) >= 75 And CInt(avetbx.Text) <= 80 Then
+                        gpointtbx.Text = "2.00"
+                        glettertbx.Text = "B"
+                        remarksbtx.Text = "Good"
+                    ElseIf CInt(avetbx.Text) >= 69 And CInt(avetbx.Text) <= 74 Then
+                        gpointtbx.Text = "2.25"
+                        glettertbx.Text = "B-"
+                        remarksbtx.Text = "Good"
+                    ElseIf CInt(avetbx.Text) >= 63 And CInt(avetbx.Text) <= 68 Then
+                        gpointtbx.Text = "2.50"
+                        glettertbx.Text = "C+"
+                        remarksbtx.Text = "Fair"
+                    ElseIf CInt(avetbx.Text) >= 57 And CInt(avetbx.Text) <= 62 Then
+                        gpointtbx.Text = "2.75"
+                        glettertbx.Text = "C"
+                        remarksbtx.Text = "Fair"
+                    ElseIf CInt(avetbx.Text) >= 50 And CInt(avetbx.Text) <= 56 Then
+                        gpointtbx.Text = "3.00"
+                        glettertbx.Text = "C-"
+                        remarksbtx.Text = "Fair"
+                    ElseIf CInt(avetbx.Text) < 50 Then
+                        gpointtbx.Text = "5.00"
+                        glettertbx.Text = "F"
+                        remarksbtx.Text = "Failed"
+                    End If
+                End If
+            End If
+
+        End If
+
+
+
+
+    End Sub
+
+    Private Sub resetbt_Click(sender As Object, e As EventArgs) Handles resetbt.Click
+        Q1tbx.Clear()
+        Q2tbx.Clear()
+        Q3tbx.Clear()
+        avetbx.Clear()
+        gpointtbx.Clear()
+        glettertbx.Clear()
+        remarksbtx.Clear()
+
+    End Sub
+End Class
+
